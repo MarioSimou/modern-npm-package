@@ -1,0 +1,23 @@
+name: Master Pipeline
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  codeAnalysis:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/gallium
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.x
+      - run: pnpm i
+
+      - name: Unit Tests
+        run: pnpm test:unit
