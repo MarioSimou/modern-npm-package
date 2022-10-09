@@ -18,6 +18,14 @@ import React from "react";
 import * as React from 'react'
 ```
 7. When `declaration` is enabled, the TS compiler will generate type definitions (*.d.ts) as well.
+8. By default, node assumes that you are using a CommonJS import, which means that the generated ESM files need to be updated with the .mjs extension. You can achieve that using: 
+```
+tsc -p tsconfig.esm.json && find 'dist/esm' | renamer --find '.js'  --replace '.mjs'
+```
+9. Before you publish a module in npm registry, make sure that you are logged in to the registry (`npm login`). This will generate a file in `~/.npmrc` that includes the necessary auth details. If you are running in a CI server, then you need to dynamically generate the file with something like 
+```
+npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+```
 
 ### Commands 
 

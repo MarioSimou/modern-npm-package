@@ -1,0 +1,33 @@
+name: Release Pipeline
+
+on:
+  workflow_run:
+    workflows:
+      - "Code Analysis Pipeline"
+    branches: 
+      - master
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: fregante/setup-git-user@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/gallium
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.x
+
+        name: Install Dependencies
+      - run: pnpm i
+
+      - name: Release package
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm semantic-release

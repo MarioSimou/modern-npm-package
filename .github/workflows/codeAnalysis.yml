@@ -1,4 +1,4 @@
-name: Master Pipeline
+name: Code Analysis Pipeline
 
 on:
   push:
@@ -21,3 +21,10 @@ jobs:
 
       - name: Unit Tests
         run: pnpm test:unit
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
