@@ -57,3 +57,7 @@ pnpm unpublish [package-name] -f
 // Unpublish a single version
 pnpm unpublish [package-name]@[version]
 ```
+
+### Sources
+
+- [Best practises for creating a modern npm package](https://snyk.io/blog/best-practices-create-modern-npm-package/?fbclid=IwAR1IOqW9k6lRdIJLhK9oHC-_PaMpCzi3XdQuAM9PuM83kHp-Yuw2QV4JMOI)
