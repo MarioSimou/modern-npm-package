@@ -1,6 +1,6 @@
 {
   "name": "@mariossimou.dev/modern-npm-package",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "private": false,
   "description": "",
   "main": "./dist/esm/index.mjs",
