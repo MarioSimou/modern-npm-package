@@ -27,7 +27,7 @@ tsc -p tsconfig.esm.json && find 'dist/esm' | renamer --find '.js'  --replace '.
 npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 ```
 
-### Commands 
+### Useful Commands 
 
 ```bash
 // List tags
